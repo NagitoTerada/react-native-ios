@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
+import { Box, NativeBaseProvider } from "native-base";
 import React from "react";
 import { View, Text } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -14,7 +15,7 @@ const Stack = createNativeStackNavigator();
 const HomeScreen = () => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home Screen</Text>
+      <Box>Hello world</Box>
     </View>
   );
 };
@@ -28,13 +29,15 @@ export const App = () => {
   } else {
     return (
       <SafeAreaProvider>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} />
-            {/* <Navigation colorScheme={colorScheme} />
+        <NativeBaseProvider>
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen name="Home" component={HomeScreen} />
+              {/* <Navigation colorScheme={colorScheme} />
             <StatusBar /> */}
-          </Stack.Navigator>
-        </NavigationContainer>
+            </Stack.Navigator>
+          </NavigationContainer>
+        </NativeBaseProvider>
       </SafeAreaProvider>
     );
   }
